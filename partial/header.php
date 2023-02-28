@@ -56,24 +56,61 @@ error_reporting(E_ERROR | E_PARSE);
             <div class="collapse navbar-collapse" id="navbarButtonsExample">
                 <!-- Left links -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="recharge.php"><button type="button"
+                    <li class="nav-item">
+                        <a class="nav-link"><button type="button" data-bs-target="#recharge" data-bs-toggle="modal"
                                 class="btn btn-info">Recharge</button></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="chatastro.php">
+                        <a class="nav-link" href="astro_chat.php">
                             <button type="button" class="btn btn-outline-secondary mx-2 ">
                                 <i class="bi bi-chat-left-text"></i> Chat With Astrologer</button></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="astrotalk.php">
+                        <a class="nav-link" href="astro_talk.php">
                             <button type="button" class="btn btn-outline-secondary mx-2">
                                 <i class="bi bi-telephone"></i>Talk to Astrologer</button></a>
                     </li>
-                    <li class="nav-item">
-                        <a type="button" href="./login.php" data-bs-toggle="modal"
-                            class="mt-2 nav-item btn btn-warning btn-rounded"><i class=" bi bi-person-circle"></i>
-                            Sign in </a>
-                    </li>
+
+                    <?php  
+                        if ($_SESSION['mobile']) {
+                        $id = $_SESSION['id'];
+                          $mobile = $_SESSION['mobile'];
+                          $sql = "SELECT * FROM user WHERE   
+                          mobile = '$mobile'";
+                        $result = mysqli_query($con, $sql);
+                        if ($result){
+                        while($row = mysqli_fetch_assoc($result)) {
+
+                          echo '<div class="dropdown">
+                          <a
+                            class="dropdown-toggle text-dark mb-2"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" 
+                            aria-expanded="false"
+                          >
+                          <i class="bi bi-person-circle fa-2x"></i>
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <li class="dropdown-item">'. $mobile.'</li>
+                            <li><button class="dropdown-item edit" type="button" id="'.$id.'" data-bs-toggle = "modal">Update Profile</button></li>
+                            <li><a class="dropdown-item" href="partial/logout.php">Logout</a></li>
+                          </ul>
+                        </div>';
+            }
+    }
+
+
+                }else{
+                    echo '<li class="nav-item">
+                    <a type="button" href="./login.php" data-bs-toggle="modal"
+                    class="mt-2 nav-item btn btn-warning btn-rounded"><i class=" bi bi-person-circle"></i>
+                    Sign in </a>
+                    </li>';
+            }
+
+?>
+
                 </ul>
                 <div class="d-flex align-items-center">
                 </div>
@@ -140,4 +177,46 @@ error_reporting(E_ERROR | E_PARSE);
         </div>
     </div> -->
 
-    <!-- Backend -->
+
+    <div class="modal fade" id="recharge" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="container text-center">
+                        <h2>Add Money to Wallet</h2>
+                    </div>
+                    <div class="container text-center">
+                        <h4>Available balance:</h4>
+                        <h2>&#8377;0</h2>
+                    </div>
+                    <h6>Popular recharge.</h6>
+                    <div>
+                        <!-- coupens -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Update modal -->
+
+    <div class="modal fade" id="updateprofile" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <!-- <button type="button" class="btn-close" style="float:right" data-bs-dismiss="modal"
+                    aria-label="Close"></button> -->
+                    <div class="wrapper">
+                        <section class="signup" id="form">
+                            <header>Update Your Profile</header>
+                            <div id="info_update">
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

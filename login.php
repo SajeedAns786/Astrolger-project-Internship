@@ -20,14 +20,21 @@
                     <p class="text-center mt-2">You will receive a 4 digit code <br> for verification </p>
                 </span>
             </label>
-            <label>
-                <p>Enter your phone number</p>
-                <input class="mb-2" type="text" placeholder="Mobile Number" style="height:36px" id="mobile"
-                    name="mobile" size="30" required>
-            </label>
+            <form action="./partial/action.php" method="POST">
+                <label>
+                    <p>Enter your phone number</p>
+                    <?php 
+                    ini_set('display_errors', 0);
+                    ini_set('log_errors', 0);
+                    error_reporting(E_ERROR | E_PARSE);
+                    $mobile = $_GET['mobile'];
+                    //echo $mobile; ?>
+                    <input class="" type="text" placeholder="Mobile Number" value="<?php echo $mobile; ?>"
+                        style="height:36px" id="mobile" name="mobile" size="30" required>
+                </label>
 
-            <button type="button" class="submit">Generate OTP</button>
-
+                <button type="submit" name="generateotp" class="submit ">Generate OTP</button>
+            </form>
         </div>
         <div class="sub-cont">
             <div class="img">
@@ -46,13 +53,18 @@
             </div>
             <div class="form sign-up">
                 <h2>Enter Your OTP</h2>
-                <label>
-                    <span>OTP</span>
-                    <input type="number" />
-                </label>
+                <form action="./partial/action.php" method="POST">
+                    <?php
+                    $mobile = $_GET['mobile'];
+                    ?>
+                    <label>
+                        <input name="mobile" type="hidden" value="<?php echo $mobile; ?>" />
+                        <span>OTP</span>
+                        <input name="entered_otp" type="number" />
+                    </label>
 
-                <button type="button" class="submit">Sign in</button>
-
+                    <button type="submit" name="signin" class="submit">Sign in</button>
+                </form>
             </div>
         </div>
     </div>

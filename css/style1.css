@@ -163,11 +163,11 @@ button {
     overflow: hidden;
     z-index: 2;
     position: relative;
-    width: 100px;
+    width: 45%;
     height: 36px;
     margin: 0 auto;
     background: transparent;
-    color: #fff;
+    color: #d4af7a;
     text-transform: uppercase;
     font-size: 15px;
     cursor: pointer;
@@ -181,13 +181,13 @@ button {
     top: 0;
     width: 100%;
     height: 100%;
-    border: 2px solid #fff;
+    border: 2px solid #d4af7a;
     border-radius: 30px;
 }
 
 .img__btn span {
     position: absolute;
-    left: 0;
+    width: 45%;
     top: 0;
     display: -webkit-box;
     display: flex;

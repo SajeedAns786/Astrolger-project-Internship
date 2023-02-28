@@ -101,7 +101,7 @@
 @keyframes neon {
     0%,
     100% {
-        text-shadow: 0 0 10px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 2px #fed128, 2px 2px 2px #806914;
+        text-shadow: 0 0 10px #8a0101a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 2px #fed128, 2px 2px 2px #806914;
         color: #f5efcb;
     }
     50% {
@@ -147,4 +147,18 @@
   }
 
 }
+
+.footer-background{
+  background-color: burlywood;
+}
+.footer-text{
+  color: crimson;
+}
   
+.astro-profile{
+  display: block;
+  width: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
